@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+<h3>Add a new course:</h3> 
+
+    <form action="/courses/add" method="POST">
+	Name: <input type="text" name="name"><br>
+	Description: <input type="text" name="description"><br>
+	<input type="submit" name="submit" value="Add">		
+</form>
+{% with messages = get_flashed_messages() %}
+{% for message in messages %}
+<span>{{ message }}</span>
+{% endfor %}
+{% endwith %}
+<h3>Courses</h3>
+<table>
+  <tr>
+    <th>Course Name</th>
+    <th>Description</th>
+    <th>Date Added</th>
+    <th>Actions</th>
+  </tr>
+  {% for courses in course %}
+  <tr> 
+    <td>{{ courses['title'] }}</td>
+    <td>{{ courses['description'] }}</td>
+    <td>{{ courses['created_at'] }}</td>
+    <td><a href="/courses/delete/{{ courses['id'] }}">remove</a></td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
