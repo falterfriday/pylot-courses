@@ -4,17 +4,12 @@
 	<title>Do you really want to delete me? Do you want to see me cry?</title>
 	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
 </head>
-<style type="text/css">
-	form {
-		display: inline-block;
-	}
 </style>
 <body>
 <h3>Are you sure you want to delete the following course?</h3>
 {% for courses in course %}
 <p>Name: {{ courses['title'] }}</p>
 <p>Description: {{ courses['description'] }}</p>
-
 <br>
 <form action="/" method="POST">
 	<input type="submit" name="no" value="No">
